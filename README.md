@@ -4,16 +4,20 @@ A simplified Shazam-like system that locates a short audio clip within a longer 
 
 ## Overview
 
-This project implements a sliding-window matching algorithm that uses the **Fast Fourier Transform (FFT)** to compare the spectral patterns of audio signals. It extracts a query clip from a full recording, converts both to the frequency domain, and finds the clip's position using cosine similarity.
+This project implements a sliding-window matching algorithm that uses the **Fast Fourier Transform (FFT)** to compare the spectral patterns of audio signals. It loads a separate query clip file and finds its position within a longer recording using cosine similarity.
 
 ## How It Works
 
-1. **Load & Preprocess** - Read `.wav` file, convert stereo to mono
-2. **Extract Query Clip** - Select a segment from the full signal by specifying start time and duration
-3. **Frequency Domain** - Compute one-sided FFT magnitude spectrum
-4. **Sliding Window Matching** - Slide a window across the full signal, compare FFTs using normalized dot product
-5. **Detect Best Match** - Find the window with highest similarity score
-6. **Visualize Results** - Plot time domain, frequency domain, similarity scores, and comparison
+1. **Load & Preprocess** - Read two `.wav` files (full recording and query clip), convert stereo to mono
+2. **Frequency Domain** - Compute one-sided FFT magnitude spectrum for the query clip
+3. **Sliding Window Matching** - Slide a window across the full signal, compare FFTs using normalized dot product
+4. **Detect Best Match** - Find the window with highest similarity score
+5. **Visualize Results** - Plot time domain, frequency domain, similarity scores, and comparison
+
+## Files Required
+
+- `sample.wav` - The full audio recording to search within
+- `clip.wav` - The audio clip you want to locate (must be shorter than sample.wav)
 
 ## Requirements
 
@@ -21,6 +25,14 @@ This project implements a sliding-window matching algorithm that uses the **Fast
 - numpy
 - matplotlib
 - scipy
+
+## Audio Files
+
+This repository does **not** include audio files due to copyright. To use this code:
+
+1. Provide your own `sample.wav` (full audio recording)
+2. Provide your own `clip.wav` (audio clip to find)
+3. Both files should be placed in the same directory as the Python script
 
 ## Setup
 
